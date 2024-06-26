@@ -35,8 +35,8 @@ DEBUG = True
 ALLOWED_HOSTS = [os.getenv("NGROK_HOST"), os.getenv("HEROKU_APP"), 'edf0-2600-1700-7e42-4410-dd7b-e0ff-8cd-60d0.ngrok-free.app']
 
 # STATIC FILES (CSS, JS, Images)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_URL = '/static/'
 
 
 # Application definition
