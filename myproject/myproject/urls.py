@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('slack/', include('myproject.slackbot.urls')),
-    path('', include('myproject.slackbot.urls')),  # This maps the root URL to the slackbot app
+    # path('slack/', include('myproject.slackbot.urls')),
+    # path('', include('myproject.slackbot.urls')),  # This maps the root URL to the slackbot app
+    path('', home, name='home'),  # Add the URL pattern for home
 ]
-
