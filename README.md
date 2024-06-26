@@ -37,8 +37,8 @@ ngrok http 8000
 # Open your Slack channel and message the bot
 ```
 
-Finally, to deploy it and test in production: 
-. . . 
+Finally, to deploy it in Heroku
+ 
 
 ### Errors That May Come Up / QA
 > You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.

@@ -10,10 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from dotenv import load_dotenv
 from pathlib import Path
+import dj_database_url
 
-import os
 
 load_dotenv()
 
@@ -31,7 +32,11 @@ SECRET_KEY = 'django-insecure-11a4+l%c$#7w^5nf9glmq(=a!fw#s7rcudrb+^(4+mn^o-j0^!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.getenv("NGROK_HOST") ]
+ALLOWED_HOSTS = [os.getenv("NGROK_HOST"), os.getenv("HEROKU_APP"), 'edf0-2600-1700-7e42-4410-dd7b-e0ff-8cd-60d0.ngrok-free.app']
+
+# STATIC FILES (CSS, JS, Images)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
 
 # Application definition
@@ -47,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,6 +61,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Whitenoise static file serving
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'myproject.urls'
 
@@ -79,6 +88,18 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# Database configuration using dj_database_url
+# settings.py
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.dummy'
+#     }
+# }
+
+# DATABASES = {
+#     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+# }
 
 DATABASES = {
     'default': {
