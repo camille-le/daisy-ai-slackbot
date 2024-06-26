@@ -35,7 +35,6 @@ DEBUG = True
 ALLOWED_HOSTS = [
     os.getenv("NGROK_HOST"),
     os.getenv("HEROKU_APP"),
-    'daisy-ai-2d6c2321fa99.herokuapp.com',
     '127.0.0.1',
     'localhost'
 ]
