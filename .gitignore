@@ -1,6 +1,7 @@
 .idea
 .env
 env
+venv
 myproject/myproject/__pycache__/
 myproject/slackbot/__pycache__/
 myproject/slackbot/migrations/__pycache__/
