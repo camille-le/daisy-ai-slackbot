@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -14,6 +14,10 @@ client = OpenAI(
 )
 
 SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
+
+
+def home(request):
+    return HttpResponse("Welcome to the home page!")
 
 
 @csrf_exempt

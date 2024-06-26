@@ -20,4 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('slack/', include('slackbot.urls')),
+    path('', include('slackbot.urls')),  # This maps the root URL to the slackbot app
 ]
+
