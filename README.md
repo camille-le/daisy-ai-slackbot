@@ -19,8 +19,28 @@ python -m venv env
 source env/bin/activate
 pip install -r requirements.txt
 ```
-To test this locally: 
+
+To run the server locally:
+```bash
+python manage.py runserver
+```
+To test the Slack integration:
+```bash
+brew install ngrok
+ngrok http 8000
+```
+
+
+
 . . . 
 
 Finally, to deploy it and test in production: 
 . . . 
+
+### Errors That May Come Up / QA
+> You have 18 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, auth, contenttypes, sessions.
+
+Run `python manage.py migrate` to apply migrations.
+
+What is Ngrok? 
+> It enables developers to expose a local development server to the Internet with minimal effort. The software makes your locally-hosted web server (like computer, laptop, rasbery PI) appear to be hosted on a subdomain of ngrok.com, meaning that no public IP or domain name on the local machine is needed.

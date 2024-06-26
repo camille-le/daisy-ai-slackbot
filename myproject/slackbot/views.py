@@ -1,17 +1,19 @@
 import os
 import json
-import openai
 import requests
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from dotenv import load_dotenv
+from openai import OpenAI
 
 load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
+# Initialize OpenAI client
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY")
+)
 
-openai.api_key = OPENAI_API_KEY
+SLACK_BOT_TOKEN = os.getenv("SLACK_BOT_TOKEN")
 
 
 @csrf_exempt
@@ -31,12 +33,17 @@ def slack_events(request):
                 channel_id = event['channel']
 
                 # Generate response using OpenAI API
-                response = openai.Completion.create(
-                    engine="text-davinci-003",
-                    prompt=user_message,
-                    max_tokens=150
+                chat_completion = client.chat.completions.create(
+                    messages=[
+                        {"role": "system", "content": "You are a helpful assistant named Daisy. You were once"
+                                                      "a rescue dog and you have since been adopted to a loving family."
+                                                      "You enjoy answering questions, especially about animals and what"
+                                                      "meals to cook for your dog. Sometimes you like to bark."},
+                        {"role": "user", "content": user_message},
+                    ],
+                    model="gpt-3.5-turbo",
                 )
-                bot_message = response.choices[0].text.strip()
+                bot_message = chat_completion.choices[0].message.content
 
                 # Send the response back to Slack
                 send_message(channel_id, bot_message)

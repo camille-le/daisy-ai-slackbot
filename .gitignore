@@ -1,3 +1,7 @@
 .idea
 .env
 env
+myproject/myproject/__pycache__/
+myproject/slackbot/__pycache__/
+myproject/slackbot/migrations/__pycache__/
+myproject/db.sqlite3
