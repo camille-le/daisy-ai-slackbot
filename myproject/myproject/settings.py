@@ -32,7 +32,14 @@ SECRET_KEY = 'django-insecure-11a4+l%c$#7w^5nf9glmq(=a!fw#s7rcudrb+^(4+mn^o-j0^!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.getenv("NGROK_HOST"), os.getenv("HEROKU_APP"), 'edf0-2600-1700-7e42-4410-dd7b-e0ff-8cd-60d0.ngrok-free.app']
+ALLOWED_HOSTS = [
+    os.getenv("NGROK_HOST"),
+    os.getenv("HEROKU_APP"),
+    'edf0-2600-1700-7e42-4410-dd7b-e0ff-8cd-60d0.ngrok-free.app',
+    'daisy-ai-2d6c2321fa99.herokuapp.com',
+    '127.0.0.1',
+    'localhost'
+]
 
 # STATIC FILES (CSS, JS, Images)
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
