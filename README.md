@@ -20,19 +20,22 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-To run the server locally:
+To test the Slack integration, install `ngrok`, including signing up for the 
+service and going through the authorization flow. You'll get back a URL which
+you can setup in `Event Subscriptions`. You'll also need to modify `ALLOWED_HOSTS`
 ```bash
-python manage.py runserver
-```
-To test the Slack integration:
-```bash
+# Install NGROK
 brew install ngrok
 ngrok http 8000
+
+# Do work to update event subscriptions
+
+# Do work to update the scopes for the Slackbot and event subscriptions
+
+# Modify ALLOWED_HOSTS
+
+# Open your Slack channel and message the bot
 ```
-
-
-
-. . . 
 
 Finally, to deploy it and test in production: 
 . . . 
