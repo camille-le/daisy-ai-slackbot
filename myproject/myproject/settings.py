@@ -34,7 +34,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     os.getenv("NGROK_HOST"),
-    os.getenv("HEROKU_APP"),
+    'daisy-ai-2d6c2321fa99.herokuapp.com',
     '127.0.0.1',
     'localhost'
 ]
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myproject.slackbot'
+    'slackbot',
 ]
 
 MIDDLEWARE = [
@@ -86,21 +86,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-# Database configuration using dj_database_url
-# settings.py
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.dummy'
-#     }
-# }
-
-# DATABASES = {
-#     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-# }
 
 DATABASES = {
     'default': {

@@ -20,7 +20,6 @@ from .views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('slack/', include('myproject.slackbot.urls')),
-    path('', include('myproject.urls')),  # This maps the root URL to the slackbot app
     path('', home, name='home'),  # Add the URL pattern for home
+    path('', include('slackbot.urls')),
 ]
